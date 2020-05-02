@@ -1,0 +1,32 @@
+.card-container {
+    width: calc(24.5% - 1px);
+    height: 30%;
+    padding: 8px;
+    border: 1px solid rgb(235, 237, 240);
+    margin: 0.25%;
+}
+
+.card-container .count-style {
+    font-size: 40px;
+}
+
+/* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .card-container {
+        width: calc(99.5% - 1px);
+        height: 30%;
+        padding: 8px;
+        border: 1px solid rgb(235, 237, 240);
+        margin: 0.25%;
+    }
+}
+
+@media screen and (max-width: 800px) and (min-width: 700px) {
+    .card-container {
+        width: calc(49.5% - 1px);
+        height: 30%;
+        padding: 8px;
+        border: 1px solid rgb(235, 237, 240);
+        margin: 0.25%;
+    }
+}

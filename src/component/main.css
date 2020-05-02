@@ -1,0 +1,25 @@
+.card-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.display-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.display-container .display-button-container {
+    display: flex;
+    flex-direction: row;
+}
+/* Loading Styling */
+.spin {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    margin: 20px 0;
+}

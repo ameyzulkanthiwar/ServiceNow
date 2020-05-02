@@ -1,0 +1,4 @@
+.ant-table-content {
+    /* Important is used to over right the inline stytle of antd */
+    table-layout: initial !important;
+}
