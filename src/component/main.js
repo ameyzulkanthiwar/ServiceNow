@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Button } from "antd";
 
-import CardComponent from "./cardComponent/cardComponent";
 import TableComponent from "./TableComponent/TableComponent";
 import Loading from "./Loading";
 import { getAllData, insertData } from "../util/api";
@@ -113,7 +112,6 @@ export default class Main extends React.Component {
     };
 
     handleInser = async () => {
-        // insertData([{ state: "Open" }, { number: 11111 }]);
         insertData([
             ["state", "Open"],
             ["number", 11111]
@@ -179,32 +177,6 @@ export default class Main extends React.Component {
                 ) : (
                     <Fragment>
                         <div className="cards-title">At A Glance</div>
-                        {/* <div className="card-grid">
-                            <CardComponent
-                                title="Open"
-                                count={openCount}
-                                bordered={true}
-                                handleDisplayState={this.handleDisplayState}
-                            ></CardComponent>
-                            <CardComponent
-                                title="In Progress"
-                                count={inProcessCount}
-                                bordered={true}
-                                handleDisplayState={this.handleDisplayState}
-                            ></CardComponent>
-                            <CardComponent
-                                title="Resolved"
-                                count={resolvedCount}
-                                bordered={true}
-                                handleDisplayState={this.handleDisplayState}
-                            ></CardComponent>
-                            <CardComponent
-                                title="Closed"
-                                count={closedCount}
-                                bordered={true}
-                                handleDisplayState={this.handleDisplayState}
-                            ></CardComponent>
-                        </div> */}
 
                         <CardContainer
                             openCount={openCount}
