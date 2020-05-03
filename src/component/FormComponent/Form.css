@@ -1,0 +1,10 @@
+.ant-col.ant-form-item-label {
+    width: 100%;
+    display: grid;
+}
+
+.form-item {
+    display: "inline-block";
+    width: 100%;
+    margin: 0 8px;
+}

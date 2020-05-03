@@ -4,25 +4,31 @@ export function getAllData() {
     );
 }
 
-export function insertData(param) {
-    return getFetch(
-        "https://https://servicenow-ui-coding-challenge-api.netlify.app/.netlify/functions/server/insertIncident",
-        param
+export async function insertData(param) {
+    const options = {
+        method: "POST",
+        body: JSON.stringify(param)
+    };
+    return await getFetch(
+        "https://servicenow-ui-coding-challenge-api.netlify.app/.netlify/functions/server/insertIncident",
+        {},
+        options
     );
 }
 
 // Used the Facade Design Pattern
-export function getFetch(url, params = {}) {
-    const queryString = Object.entries(params)
-        .map((param) => {
-            return `${param[1][0]} = ${param[1][1]}`;
-        })
-        .join("&");
-
-    console.log("Query string::", `${url}?${queryString}`);
-
-    return fetch(`${url}?${queryString}`, {
+export function getFetch(url, params = {}, options = {}) {
+    const defaultOption = {
         method: "GET",
-        headers: { "Content-Type": "application/json" }
-    }).then((response) => response.json());
+        headers: { "Content-Type": "application/json", Accept: "application/json" }
+    };
+
+    return fetch(`${url}`, {
+        ...defaultOption,
+        ...options
+    })
+        .then((response) => response.json())
+        .catch((error) => {
+            console.log("error", error);
+        });
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./cardComponent.css";
+import "./Card.css";
 
 export default class CardComponent extends React.Component {
     handleClick = () => {

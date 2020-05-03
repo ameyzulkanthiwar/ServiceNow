@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import { PageHeader } from "antd";
-import CardComponent from "./component/cardComponent/cardComponent";
-import Main from "./component/main";
+import Main from "./component/MainComponent/Main";
 
 function App() {
     return (

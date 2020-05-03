@@ -1,0 +1,17 @@
+.cards-title,
+.displaystate-text {
+    font-size: 20px;
+    color: black;
+    padding: 8px;
+}
+
+.display-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.display-container .display-button-container {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,3 +1,9 @@
+.card-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .card-container {
     width: calc(24.5% - 1px);
     height: 30%;

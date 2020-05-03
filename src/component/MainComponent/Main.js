@@ -1,25 +1,27 @@
 import React, { Fragment } from "react";
 import { Button } from "antd";
 
-import TableComponent from "./TableComponent/TableComponent";
-import Loading from "./Loading";
-import { getAllData, insertData } from "../util/api";
+import TableComponent from "../TableComponent/TableComponent";
+import Loading from "../Loading/Loading";
+import { getAllData } from "../../util/api";
+import ModalComponent from "../ModalComponent/ModalComponent";
+import CardContainer from "../Card/CardContainer";
+import FormComponent from "../FormComponent/FormComponent";
 
-import "./main.css";
-import ModalComponent from "./ModalComponent/modalComponent";
-import CardContainer from "./cardContainer";
+import "./Main.css";
 
 export default class Main extends React.Component {
     state = {
         error: null,
-        // We are storing data in two places here so we do not need to featch again and again
+        // We are storing data in two places here so we do not need to fetch again and again
         allData: [],
         displayData: [],
         displayState: "",
         openCount: 0,
         inProcessCount: 0,
         resolvedCount: 0,
-        closedCount: 0
+        closedCount: 0,
+        modalState: false
     };
 
     async componentDidMount() {
@@ -111,11 +113,13 @@ export default class Main extends React.Component {
         }
     };
 
-    handleInser = async () => {
-        insertData([
-            ["state", "Open"],
-            ["number", 11111]
-        ]);
+    handleModalState = (value) => {
+        this.setState((prevState) => {
+            return {
+                ...prevState,
+                modalState: value
+            };
+        });
     };
 
     render() {
@@ -126,10 +130,11 @@ export default class Main extends React.Component {
             inProcessCount,
             resolvedCount,
             closedCount,
-            displayState
+            displayState,
+            modalState
         } = this.state;
 
-        // Table column strucher
+        // Table column stretcher
         const columns = [
             {
                 title: "Number",
@@ -186,7 +191,7 @@ export default class Main extends React.Component {
                             handleDisplayState={this.handleDisplayState}
                         ></CardContainer>
 
-                        {/*  Button grig syatem */}
+                        {/*  Button grig system */}
                         <div className="display-container">
                             <div className="displaystate-text">
                                 {displayState === "" ? <div> All Data </div> : displayState}
@@ -204,11 +209,14 @@ export default class Main extends React.Component {
 
                                 <ModalComponent
                                     modalButtonText={"Insert Data"}
-                                    modalTitle={"Insert Insident"}
+                                    modalTitle={"Insert Incident"}
+                                    modalState={modalState}
+                                    handleModalState={this.handleModalState}
                                 >
-                                    aaa
+                                    <FormComponent
+                                        handleModalState={this.handleModalState}
+                                    ></FormComponent>
                                 </ModalComponent>
-                                <Button onClick={() => this.handleInser()}>test</Button>
                             </div>
                         </div>
 

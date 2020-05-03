@@ -1,41 +1,20 @@
 import React from "react";
 import { Modal, Button } from "antd";
 
+import "./Modal.css";
+
 export default class ModalComponent extends React.Component {
-    state = { visible: false };
-
-    showModal = () => {
-        this.setState({
-            visible: true
-        });
-    };
-
-    handleOk = (e) => {
-        console.log(e);
-        this.setState({
-            visible: false
-        });
-    };
-
-    handleCancel = (e) => {
-        console.log(e);
-        this.setState({
-            visible: false
-        });
-    };
-
     render() {
-        const { modalButtonText, modalTitle, children } = this.props;
+        const { modalButtonText, modalTitle, children, modalState, handleModalState } = this.props;
         return (
             <div>
-                <Button type="primary" onClick={this.showModal}>
+                <Button type="primary" onClick={() => handleModalState(true)}>
                     {modalButtonText}
                 </Button>
                 <Modal
                     title={modalTitle}
-                    visible={this.state.visible}
-                    onOk={this.handleOk}
-                    onCancel={this.handleCancel}
+                    visible={modalState}
+                    onCancel={() => handleModalState(false)}
                 >
                     {children}
                 </Modal>

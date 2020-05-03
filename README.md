@@ -12,63 +12,21 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `Pacakages insall` 
+### `Pacakages insall`
 
-# Antd 
+# Antd
 
-* we are using Antd css frame work for the component.
-* To use antd in create react app we need to install moment of version 2.18.1
+-   we are using Antd css frame work for the component.
+-   To use antd in create react app we need to install moment of version 2.18.1 for more refrence `https://github.com/ant-design/ant-design/issues/23823`
 
 ```
 yarn add moment@2.18.1
 ```
 
-* This is one of the dependances craete react ask for using antd.
-* We also need to add the  ` import 'antd/dist/antd.css'` in the index.js file of the root folder of create-react-app
-
+-   This is one of the dependances craete react ask for using antd.
+-   We also need to add the `import 'antd/dist/antd.css'` in the index.js file of the root folder of create-react-app
 
 ### `Folder strucher`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### `yarn test`
 

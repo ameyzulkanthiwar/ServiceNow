@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 
-import CardComponent from "./cardComponent/cardComponent";
+import CardComponent from "./CardComponent";
 
-import "./main.css";
+import "./Card.css";
 
 export default class CardContainer extends React.Component {
     render() {
