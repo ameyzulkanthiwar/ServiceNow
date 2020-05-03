@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import CardComponent from "./CardComponent";
 
@@ -9,34 +9,32 @@ export default class CardContainer extends React.Component {
         const { openCount, inProcessCount, resolvedCount, closedCount } = this.props;
 
         return (
-            <Fragment>
-                <div className="card-grid">
-                    <CardComponent
-                        title="Open"
-                        count={openCount}
-                        bordered={true}
-                        handleDisplayState={this.props.handleDisplayState}
-                    ></CardComponent>
-                    <CardComponent
-                        title="In Progress"
-                        count={inProcessCount}
-                        bordered={true}
-                        handleDisplayState={this.props.handleDisplayState}
-                    ></CardComponent>
-                    <CardComponent
-                        title="Resolved"
-                        count={resolvedCount}
-                        bordered={true}
-                        handleDisplayState={this.props.handleDisplayState}
-                    ></CardComponent>
-                    <CardComponent
-                        title="Closed"
-                        count={closedCount}
-                        bordered={true}
-                        handleDisplayState={this.props.handleDisplayState}
-                    ></CardComponent>
-                </div>
-            </Fragment>
+            <div className="card-grid">
+                <CardComponent
+                    title="Open"
+                    count={openCount}
+                    bordered={true}
+                    handleDisplayState={this.props.handleDisplayState}
+                ></CardComponent>
+                <CardComponent
+                    title="In Progress"
+                    count={inProcessCount}
+                    bordered={true}
+                    handleDisplayState={this.props.handleDisplayState}
+                ></CardComponent>
+                <CardComponent
+                    title="Resolved"
+                    count={resolvedCount}
+                    bordered={true}
+                    handleDisplayState={this.props.handleDisplayState}
+                ></CardComponent>
+                <CardComponent
+                    title="Closed"
+                    count={closedCount}
+                    bordered={true}
+                    handleDisplayState={this.props.handleDisplayState}
+                ></CardComponent>
+            </div>
         );
     }
 }

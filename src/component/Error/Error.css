@@ -1,0 +1,20 @@
+.error-set {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: floralwhite;
+    color: red;
+    font-size: 25px;
+}
+.Error {
+    height: calc(100vh - 74px);
+}
+
+.form-error {
+    height: calc(50vh - 74px);
+}
+
+.card-container-error {
+    height: 124px;
+}

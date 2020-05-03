@@ -10,7 +10,7 @@ export default class CardComponent extends React.Component {
     render() {
         const { count, title } = this.props;
         return (
-            <div className="card-container" onClick={() => this.handleClick()}>
+            <div className="card-container" onClick={this.handleClick}>
                 <div>{title}</div>
                 <hr></hr>
                 <div className="count-style">{count}</div>

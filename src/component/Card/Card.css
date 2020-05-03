@@ -10,6 +10,7 @@
     padding: 8px;
     border: 1px solid rgb(235, 237, 240);
     margin: 0.25%;
+    cursor: pointer;
 }
 
 .card-container .count-style {

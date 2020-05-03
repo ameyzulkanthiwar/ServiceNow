@@ -11,7 +11,12 @@
     justify-content: space-between;
 }
 
+.all-data-button {
+    margin: 0 8px;
+}
+
 .display-container .display-button-container {
     display: flex;
     flex-direction: row;
+    padding: 8px;
 }

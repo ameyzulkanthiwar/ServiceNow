@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Select } from "antd";
 
-import { insertData } from "../../util/api";
+// import { insertData } from "../../util/api";
 
 import "./Form.css";
 
@@ -9,12 +9,13 @@ export default class FormComponent extends React.Component {
     formRef = React.createRef();
 
     onFinish = async (values) => {
-        // Make a POST request
-        await insertData(values);
-        //  Clear the form data
-        this.formRef.current.resetFields();
-        //  Make modal closed
-        this.props.handleModalState(false);
+        try {
+            await this.props.handleSubmitForm(values);
+            //  Clear the form data
+            this.formRef.current.resetFields();
+            //  Make modal closed
+            this.props.handleModalState(false);
+        } catch (error) {}
     };
 
     render() {

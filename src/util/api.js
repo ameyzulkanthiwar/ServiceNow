@@ -34,24 +34,23 @@ export async function getFetch(url, params = {}, options = {}) {
         headers: { "Content-Type": "application/json", Accept: "application/json" }
     };
 
-    if (options && options.method !== "GET") {
-        return await fetch(`${url}`, {
-            ...defaultOption,
-            ...options
-        })
-            .then((response) => response.json())
-            .catch((error) => {
-                console.log("error", error);
-            });
-    }
-
-    //  method is GET
+    let requestUrl = "";
     const queryString = Object.entries(params)
         .map((param) => {
             return `${param[1][0]}=${param[1][1]}`;
         })
         .join("&");
-    return await fetch(`${url}?${queryString}`, {
-        ...defaultOption
-    }).then((response) => response.json());
+
+    if (options && options.method !== "GET") {
+        requestUrl = url;
+    } else {
+        requestUrl = `${url}?${queryString}`;
+    }
+
+    const response = await fetch(requestUrl, {
+        ...defaultOption,
+        ...options
+    });
+    if (!response.ok) throw new Error(response.statusText);
+    return response.json();
 }
