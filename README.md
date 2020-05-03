@@ -43,9 +43,13 @@ yarn add moment@2.18.1
 
 There are issues with API, All api is not correlated with each other, Because of that User is not getting proper data.<br>
 
-API with end point IncidentsByState is suppose to be a subset of API with end point "incidents" but its not.<br>
+API with end point `IncidentsByState` is suppose to be a subset of API with end point `incidents` but its not.<br>
 
-Data that we are displaying to user is not a consistent.
+Data that we are displaying to user is not a consistent. <br>
+
+While inserting data for incident, `short_description` is required field but we are not showing this data on the screen(Table). Which will be irrelevant for the user.<br>
+
+When we updating the data it is not updating the API endpoint `incidents`.
 
 # Card
 
