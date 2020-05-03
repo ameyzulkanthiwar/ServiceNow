@@ -1,8 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Select } from "antd";
 
-// import { insertData } from "../../util/api";
-
 import "./Form.css";
 
 export default class FormComponent extends React.Component {
@@ -20,6 +18,7 @@ export default class FormComponent extends React.Component {
 
     render() {
         const { Option } = Select;
+        const { submitButtonText } = this.props;
         return (
             <Form name="control-ref" ref={this.formRef} onFinish={this.onFinish}>
                 <Form.Item
@@ -57,7 +56,7 @@ export default class FormComponent extends React.Component {
 
                 <Form.Item className="form-item">
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        {submitButtonText}
                     </Button>
                 </Form.Item>
             </Form>

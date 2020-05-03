@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Button } from "antd";
 
 import TableComponent from "../TableComponent/TableComponent";
@@ -7,9 +7,9 @@ import { getAllData, getDataByState, insertData } from "../../util/api";
 import ModalComponent from "../ModalComponent/ModalComponent";
 import CardContainer from "../Card/CardContainer";
 import FormComponent from "../FormComponent/FormComponent";
+import Error from "../Error/Error";
 
 import "./Main.css";
-import Error from "../Error/Error";
 
 export default class Main extends React.Component {
     state = {
@@ -41,6 +41,7 @@ export default class Main extends React.Component {
                 };
             });
         } catch (error) {
+            console.log("Error 1");
             this.setState({ isError: true });
         }
         this.setState({ isLoading: false });
@@ -67,6 +68,7 @@ export default class Main extends React.Component {
                     };
                 });
             } catch (error) {
+                console.log("Error 2");
                 this.setState((prevState) => {
                     return {
                         ...prevState,
@@ -87,13 +89,17 @@ export default class Main extends React.Component {
 
         // Getting count for Open State
         if (this.state.displayState !== "") {
-            const data = await getDataByState([["state", this.state.displayState]]);
-            this.setState((prevState) => {
-                return {
-                    ...prevState,
-                    displayData: data
-                };
-            });
+            try {
+                const data = await getDataByState([["state", this.state.displayState]]);
+                this.setState((prevState) => {
+                    return {
+                        ...prevState,
+                        displayData: data
+                    };
+                });
+            } catch (error) {
+                console.log("Error 3");
+            }
         }
     };
 
@@ -114,6 +120,7 @@ export default class Main extends React.Component {
         try {
             await insertData(values);
         } catch (error) {
+            console.log("error 4");
             this.setState({ setFormError: true });
         }
     };
@@ -225,6 +232,7 @@ export default class Main extends React.Component {
                                     />
                                 ) : (
                                     <FormComponent
+                                        submitButtonText={"Submit"}
                                         handleModalState={this.handleModalState}
                                         handleSubmitForm={this.handleSubmitForm}
                                     />

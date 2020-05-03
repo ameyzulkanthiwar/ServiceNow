@@ -6,33 +6,35 @@ import "./Card.css";
 
 export default class CardContainer extends React.Component {
     render() {
-        const { openCount, inProcessCount, resolvedCount, closedCount } = this.props;
+        const {
+            openCount,
+            inProcessCount,
+            resolvedCount,
+            closedCount,
+            handleDisplayState
+        } = this.props;
 
         return (
             <div className="card-grid">
                 <CardComponent
                     title="Open"
                     count={openCount}
-                    bordered={true}
-                    handleDisplayState={this.props.handleDisplayState}
+                    handleDisplayState={handleDisplayState}
                 ></CardComponent>
                 <CardComponent
                     title="In Progress"
                     count={inProcessCount}
-                    bordered={true}
-                    handleDisplayState={this.props.handleDisplayState}
+                    handleDisplayState={handleDisplayState}
                 ></CardComponent>
                 <CardComponent
                     title="Resolved"
                     count={resolvedCount}
-                    bordered={true}
-                    handleDisplayState={this.props.handleDisplayState}
+                    handleDisplayState={handleDisplayState}
                 ></CardComponent>
                 <CardComponent
                     title="Closed"
                     count={closedCount}
-                    bordered={true}
-                    handleDisplayState={this.props.handleDisplayState}
+                    handleDisplayState={handleDisplayState}
                 ></CardComponent>
             </div>
         );

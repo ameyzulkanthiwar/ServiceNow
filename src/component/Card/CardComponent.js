@@ -4,7 +4,8 @@ import "./Card.css";
 
 export default class CardComponent extends React.Component {
     handleClick = () => {
-        this.props.handleDisplayState(this.props.title);
+        const { handleDisplayState, title } = this.props;
+        handleDisplayState(title);
     };
 
     render() {
