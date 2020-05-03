@@ -3,7 +3,7 @@ import { Button } from "antd";
 
 import TableComponent from "../TableComponent/TableComponent";
 import Loading from "../Loading/Loading";
-import { getAllData } from "../../util/api";
+import { getAllData, getDataByState } from "../../util/api";
 import ModalComponent from "../ModalComponent/ModalComponent";
 import CardContainer from "../Card/CardContainer";
 import FormComponent from "../FormComponent/FormComponent";
@@ -26,94 +26,65 @@ export default class Main extends React.Component {
 
     async componentDidMount() {
         try {
-            console.log("try section");
             const data = await getAllData();
-            console.log("Data:", data);
-            data &&
-                data.map(async (res) => {
-                    // Geting count for Open State
-                    if (res.state === "Open") {
-                        await this.setState((prevState) => {
-                            return {
-                                ...prevState,
-                                openCount: prevState.openCount + 1
-                            };
-                        });
-                    }
+            this.handleCounts();
 
-                    // Geting count for Open State
-                    if (res.state === "Resolved") {
-                        await this.setState((prevState) => {
-                            return {
-                                ...prevState,
-                                resolvedCount: prevState.resolvedCount + 1
-                            };
-                        });
-                    }
-
-                    // Geting count for In Progress State
-                    if (res.state === "In Progress") {
-                        await this.setState((prevState) => {
-                            return {
-                                ...prevState,
-                                inProcessCount: prevState.inProcessCount + 1
-                            };
-                        });
-                    }
-
-                    // Geting count for Closed State
-                    if (res.state === "Closed") {
-                        await this.setState((prevState) => {
-                            return {
-                                ...prevState,
-                                closedCount: prevState.closedCount + 1
-                            };
-                        });
-                    }
-                });
-            await this.setState((prevState) => {
+            this.setState((prevState) => {
                 return {
                     ...prevState,
                     displayData: data,
                     allData: data
                 };
             });
-            console.log("this.state:", this.state.data);
         } catch {
             console.log("error");
         }
     }
 
-    filterData = async () => {
-        console.log("................................");
-        const updateData = this.state.allData.filter(
-            (res) => res.state === this.state.displayState
-        );
-        console.log("Update Data: ", updateData);
-        await this.setState((prevState) => {
-            return {
-                ...prevState,
-                displayData: updateData
-            };
+    handleCounts = () => {
+        //  Schema for updating counts
+        const countSchema = [
+            ["openCount", "Open"],
+            ["resolvedCount", "Resolved"],
+            ["inProcessCount", "In Progress"],
+            ["closedCount", "Closed"]
+        ];
+
+        countSchema.forEach(async (res) => {
+            const data = await getDataByState([["state", res[1]]]);
+
+            this.setState((prevState) => {
+                return {
+                    ...prevState,
+                    [res[0]]: data && data.length
+                };
+            });
         });
     };
 
     handleDisplayState = async (state) => {
-        console.log("handle Displat state");
         await this.setState((prevState) => {
             return {
                 ...prevState,
                 displayState: state
             };
         });
-        console.log("this.state:", this.state);
 
+        // Getting count for Open State
         if (this.state.displayState !== "") {
-            this.filterData();
+            const data = await getDataByState([["state", this.state.displayState]]);
+            this.setState((prevState) => {
+                return {
+                    ...prevState,
+                    displayData: data
+                };
+            });
         }
     };
 
     handleModalState = (value) => {
+        this.handleCounts();
+
         this.setState((prevState) => {
             return {
                 ...prevState,
