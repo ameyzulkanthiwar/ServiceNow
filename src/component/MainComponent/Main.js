@@ -157,7 +157,7 @@ export default class Main extends React.Component {
             },
             {
                 title: "Description",
-                dataIndex: "description",
+                dataIndex: "short_description",
                 key: "description",
                 width: "40%"
             },
