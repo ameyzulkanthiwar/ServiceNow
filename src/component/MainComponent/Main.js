@@ -4,7 +4,7 @@ import { Button } from "antd";
 import TableComponent from "../TableComponent/TableComponent";
 import Loading from "../Loading/Loading";
 import { getAllData, getDataByState, insertData } from "../../util/api";
-import ModalComponent from "../ModalComponent/ModalComponent";
+import ModalComponent from "../ModalComponent/Modal";
 import CardContainer from "../Card/CardContainer";
 import FormComponent from "../FormComponent/FormComponent";
 import Error from "../Error/Error";
